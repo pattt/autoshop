@@ -1,0 +1,24 @@
+{
+  "name": "vuejs",
+  "version": "1.0.0",
+  "description": "vuejs course project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2017": "^6.24.1",
+    "webpack": "^3.7.1",
+    "css-loader": "^0.28.7",
+    "vue-template-compiler": "^2.4.4",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "vue": "^2.4.4"
+  }
+}
