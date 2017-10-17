@@ -8,7 +8,7 @@ services:
             - "8008:80"
         depends_on:
             - mysqldump
-        command: /bin/bash -c "sed -i 163,173's/AllowOverride None/AllowOverride All/gi' /etc/apache2/apache2.conf && ln /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load &&  /my_init" 
+        command: /bin/bash -c "sed -i 163,173's/AllowOverride None/AllowOverride All/gi' /etc/apache2/apache2.conf && (test -e /etc/apache2/mods-enabled/rewrite.load || ln /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load) &&  /my_init"
     mysqldump:
         image: mysql
         environment:
