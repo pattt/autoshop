@@ -1,10 +1,14 @@
 <template>
-    <div id="app">
-        app_component!!!
-        {{msg}} app
-        <login></login>
-        <history></history>
-    </div>
+    <b-container  id="app" class="bv-example-row">
+        <b-row>
+            <b-col>
+                <login></login>
+            </b-col>
+            <b-col sm="10">
+                <history></history>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
