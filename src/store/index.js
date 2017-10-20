@@ -32,10 +32,24 @@ const store = new Vuex.Store({
     },
     actions: {
         async history({ commit }, token) {
-            let {data:{data:res=[]}} = await axios.get('http://localhost:8008/api/history', {headers: {'token': token}})
+            try {
+                let {data: {data: res = []}} = await axios.get('http://localhost:8008/api/history', {headers: {'token': token}})
+            } catch (e) {
+                error(this, 'Cant show history')
+            }
             commit('set', {type: 'history', items: res})
         },
-        login({ commit, dispatch }, token) {
+        async login({ commit, dispatch }, token) {
+
+            if(_.isObject(token)) {
+                try {
+                    let response = await axios.post('http://localhost:8008/api/auth', token)
+                    token = _.get(response, 'data.data.token')
+                } catch (e) {
+                    error(this, 'Cant get token')
+                }
+            }
+
             sessionStorage.setItem('token', token);
             commit('set', {type: 'isLoggedIn', items: true})
             dispatch('history', token);
@@ -50,12 +64,12 @@ const store = new Vuex.Store({
     }
 })
 
-function error(obj) {
+function error(obj, text) {
     obj.commit('set', {
         type: 'mainMsg',
         items: {
             type: 'error',
-            text: 'Cant show history'
+            text
         }
     })
 }

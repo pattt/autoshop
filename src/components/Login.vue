@@ -35,20 +35,7 @@
         },
         methods: {
             async singin() {
-                let {data:{data:{token}}} = await axios.post('http://localhost:8008/api/auth', {login: this.name, password: this.password})
-
-                if(token) {
-                    this.$store.dispatch('login', token);
-                }
-                else {
-                    obj.commit('set', {
-                        type: 'mainMsg',
-                        items: {
-                            type: 'error',
-                            text: 'Cant get token'
-                        }
-                    })
-                }
+                this.$store.dispatch('login', {login: this.name, password: this.password});
             },
             logOut() {
                 this.$store.dispatch('logout');
