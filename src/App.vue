@@ -11,7 +11,9 @@
 
         <b-row>
             <b-col>
-                <login></login>
+                <aside>
+                    <login></login>
+                </aside>
             </b-col>
             <b-col sm="9">
                 <router-view></router-view>
@@ -35,7 +37,8 @@ export default {
     created() {
         let token = sessionStorage.getItem('token');
         if (token) {
-            this.$store.dispatch('history', sessionStorage.getItem('token'));
+            this.$store.dispatch('history', token);
+            this.$store.commit('set', {type: 'isLoggedIn',items: true})
         }
     }
 }
