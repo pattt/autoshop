@@ -1,10 +1,12 @@
 <template>
-    <b-container  id="app" class="bv-example-row">
+    <b-container fluid id="app">
+        <alert></alert>
+
         <b-row>
             <b-col>
                 <login></login>
             </b-col>
-            <b-col sm="10">
+            <b-col sm="9">
                 <history></history>
             </b-col>
         </b-row>
@@ -14,16 +16,19 @@
 <script>
 import History from "./components/History";
 import Login from './components/Login';
+import Alert from './components/Alert';
 
 export default {
     name: 'app',
     components: {
         history: History,
-        login: Login
+        login: Login,
+        alert: Alert
     },
-    data() {
-        return {
-            msg: "sometext"
+    created() {
+        let token = sessionStorage.getItem('token');
+        if (token) {
+            this.$store.dispatch('history', sessionStorage.getItem('token'));
         }
     }
 }
