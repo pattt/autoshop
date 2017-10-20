@@ -39,7 +39,7 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .visible {
         visibility: visible;
         opacity: 1;

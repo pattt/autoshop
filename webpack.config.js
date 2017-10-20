@@ -24,13 +24,15 @@ module.exports = {
                 loader: 'vue-loader'
             },
             {
-                test: /\.css$/,
-                use: [
-                    { loader: "style-loader" },
-                    { loader: "css-loader" }
-                ]
+                test: /\.s[a|c]ss$/,
+                loader: 'style!css!sass'
             }
-        ]
+        ],
+        vue: {
+            loaders: {
+                scss: 'style!css!sass'
+            }
+        }
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
