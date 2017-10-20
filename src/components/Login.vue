@@ -30,28 +30,24 @@
             }
         },
         methods: {
-            singin() {
-                axios.post('http://localhost:8008/api/auth', {login: this.name, password: this.password})
-                .then(response => {
-                    const token = _.get(response, 'data.data.token');
+            async singin() {
+                let {data:{data:{token}}} = await axios.post('http://localhost:8008/api/auth', {login: this.name, password: this.password})
 
-                    if(token) {
-                        sessionStorage.setItem('token', token);
-                        console.log(`token is set ${token}`);
-                        this.isLoggedIn = true;
-                        this.$store.dispatch('history', token);
-                    }
-                    else {
-                        obj.commit('set', {
-                            type: 'mainMsg',
-                            items: {
-                                type: 'error',
-                                text: 'Cant get token'
-                            }
-                        })
-                    }
-                })
-                .catch(err => err);
+                if(token) {
+                    sessionStorage.setItem('token', token);
+                    console.log(`token is set ${token}`);
+                    this.isLoggedIn = true;
+                    this.$store.dispatch('history', token);
+                }
+                else {
+                    obj.commit('set', {
+                        type: 'mainMsg',
+                        items: {
+                            type: 'error',
+                            text: 'Cant get token'
+                        }
+                    })
+                }
             },
             getToken() {
                 return sessionStorage.getItem('token');

@@ -30,17 +30,9 @@ const store = new Vuex.Store({
         }
     },
     actions: {
-        history({ commit }, token) {
-            axios.get('http://localhost:8008/api/history', {headers: {'token': token}})
-                .then(response => {
-                    let results = response.data.data;
-                    if(!results) {
-                        error(this)
-                        return
-                    }
-                    commit('set', {type: 'history', items: results})
-                })
-                .catch(err => error(this));
+        async history({ commit }, token) {
+            let {data:{data:res=[]}} = await axios.get('http://localhost:8008/api/history', {headers: {'token': token}})
+            commit('set', {type: 'history', items: res})
         }
     }
 })
