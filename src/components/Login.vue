@@ -39,6 +39,7 @@
                         sessionStorage.setItem('token', token);
                         console.log(`token is set ${token}`);
                         this.isLoggedIn = true;
+                        this.$store.dispatch('history', token);
                     }
                     else {
                         obj.commit('set', {
@@ -58,6 +59,8 @@
             logOut() {
                 sessionStorage.removeItem('token');
                 this.isLoggedIn = !!this.getToken();
+
+                this.$store.commit('logout')
             }
         }
     }

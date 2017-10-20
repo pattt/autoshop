@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul id="history">
+        <ul id="history" v-if="history.length">
             <b-table bordered :items="history" :fields="fields"></b-table>
         </ul>
     </div>

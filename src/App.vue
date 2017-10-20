@@ -1,5 +1,12 @@
 <template>
     <b-container fluid id="app">
+        <header>
+            <nav>
+                <router-link to="/history">History</router-link>
+                <router-link to="/shop">Shop</router-link>
+            </nav>
+        </header>
+
         <alert></alert>
 
         <b-row>
@@ -7,7 +14,7 @@
                 <login></login>
             </b-col>
             <b-col sm="9">
-                <history></history>
+                <router-view></router-view>
             </b-col>
         </b-row>
     </b-container>

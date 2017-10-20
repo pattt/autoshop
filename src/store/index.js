@@ -24,6 +24,9 @@ const store = new Vuex.Store({
     mutations: {
         set(state, {type, items}) {
             state[type] = items
+        },
+        logout(state) {
+            state.history = [];
         }
     },
     actions: {
@@ -35,7 +38,6 @@ const store = new Vuex.Store({
                         error(this)
                         return
                     }
-                    error(this)
                     commit('set', {type: 'history', items: results})
                 })
                 .catch(err => error(this));
