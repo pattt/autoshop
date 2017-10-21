@@ -1,9 +1,9 @@
 <template>
     <b-container fluid id="app">
         <header>
-            <nav>
-                <router-link to="/history">History</router-link>
-                <router-link to="/shop">Shop</router-link>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <router-link to="/history" class="nav-item nav-link">History</router-link>
+                <router-link to="/shop" class="nav-item nav-link">Shop</router-link>
             </nav>
         </header>
 
@@ -44,8 +44,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
     #app {
-        color: blue;
+        header {
+            margin-bottom: 10px;
+            nav {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+        }
     }
 </style>

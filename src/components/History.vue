@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <ul id="history" v-if="history.length">
-            <b-table bordered :items="history" :fields="fields"></b-table>
-        </ul>
+    <div id="history" v-if="history.length">
+            <b-table class="table table-striped table-hover" :items="history" :fields="fields"></b-table>
     </div>
 </template>
 
@@ -25,8 +23,17 @@
     }
 </script>
 
-<style>
+<style lang="scss">
     #history {
-        color: red;
+        border-radius: 10px;
+        border: 2px solid darkgray;
+        .table thead th {
+            &:first-child {
+                border-top: none;
+            }
+            &:last-child {
+                border-top: none;
+            }
+        }
     }
 </style>

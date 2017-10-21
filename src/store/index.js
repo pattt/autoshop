@@ -4,7 +4,6 @@ import axios from 'axios';
 
 Vue.use(Vuex)
 
-
 const store = new Vuex.Store({
     state: {
         history: [],
@@ -64,7 +63,7 @@ const store = new Vuex.Store({
     }
 })
 
-function error(obj, text) {
+function error(obj, text="unknown error") {
     obj.commit('set', {
         type: 'mainMsg',
         items: {
