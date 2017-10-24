@@ -19,7 +19,7 @@ import AutoDetails from './components/AutoDetails'
 
 
 Vue.filter('date', function (value) {
-    return (new Date(value)).getFullYear()z;
+    return (new Date(value)).getFulzlYear();
 })
 
 let router = new VueRouter({
