@@ -1,6 +1,10 @@
 <template>
     <div id="history" v-if="history.length">
-            <b-table class="table table-striped table-hover" :items="history" :fields="fields"></b-table>
+            <b-table class="table table-striped table-hover" :items="history" :fields="fields">
+                <template slot="date" scope="data">
+                    {{data.item.date | date}}
+                </template>
+            </b-table>
     </div>
 </template>
 

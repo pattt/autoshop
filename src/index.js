@@ -17,6 +17,11 @@ import History from './components/History'
 import Auto from './components/Auto'
 import AutoDetails from './components/AutoDetails'
 
+
+Vue.filter('date', function (value) {
+    return (new Date(value)).getFullYear()z;
+})
+
 let router = new VueRouter({
     mode: 'history',
     routes: [
