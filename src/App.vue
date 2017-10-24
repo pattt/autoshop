@@ -3,7 +3,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <router-link to="/history" class="nav-item nav-link">History</router-link>
-                <router-link to="/shop" class="nav-item nav-link">Shop</router-link>
+                <router-link to="/auto" class="nav-item nav-link">Auto</router-link>
             </nav>
         </header>
 

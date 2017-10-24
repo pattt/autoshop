@@ -11,7 +11,9 @@ const store = new Vuex.Store({
             type: '',
             text: 'msg text'
         },
-        isLoggedIn: false
+        isLoggedIn: false,
+        autolist: [],
+        autodetails: null
     },
     getters: {
         history(state) {
@@ -22,6 +24,12 @@ const store = new Vuex.Store({
         },
         isLoggedIn(state) {
             return state.isLoggedIn;
+        },
+        autolist(state) {
+            return state.autolist
+        },
+        autodetails(state) {
+            return state.autodetails
         }
     },
     mutations: {
@@ -56,9 +64,28 @@ const store = new Vuex.Store({
         },
         logout({ commit }) {
             commit('set', {type: 'history',items: []})
+            commit('set', {type: 'autolist',items: []})
+            commit('set', {type: 'autodetails',items: []})
             commit('set', {type: 'isLoggedIn',items: false})
             sessionStorage.removeItem('token');
-
+        },
+        async autolist({commit}) {
+            try {
+                let {data: {data: res}} = await axios.get('http://localhost:8008/api/auto')
+                console.log(res);
+                commit('set', {type: 'autolist', items: res})
+            } catch (e) {
+                error(this, 'Cant load auto')
+            }
+        },
+        async autodetails({ commit }, id) {
+            try {
+                //let {data: {data: res = []}} = await axios.get('http://localhost:8008/api/auto/' + id)
+                let res = {qwe: 'qwe'}
+                commit('set', {type: 'autodetails', items: res})
+            } catch (e) {
+                error(this, 'Cant show history')
+            }
         }
     }
 })

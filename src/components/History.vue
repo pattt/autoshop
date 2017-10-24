@@ -12,7 +12,7 @@
         name: 'history',
         data() {
             return {
-                fields: ['auto', 'user', 'date']
+                fields: [{key: 'user', sortable: true}, 'auto', 'date']
             }
         },
         computed: {
