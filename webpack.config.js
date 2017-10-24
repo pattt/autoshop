@@ -21,18 +21,23 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
+                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax' // <style lang="sass">
+                    }
+                }
+
             },
             {
-                test: /\.s[a|c]ss$/,
-                loader: 'style!css!sass'
+                test: /\.css$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
+                ]
             }
-        ],
-        vue: {
-            loaders: {
-                scss: 'style!css!sass'
-            }
-        }
+        ]
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
